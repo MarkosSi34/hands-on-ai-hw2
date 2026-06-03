@@ -1,9 +1,9 @@
-# ── Secrets ────────────────────────────────────────────────
+# Secrets
 .env
 *.env
 !.env.example
 
-# ── Python ─────────────────────────────────────────────────
+# Python
 __pycache__/
 *.py[cod]
 *.egg-info/
@@ -11,21 +11,21 @@ __pycache__/
 build/
 dist/
 
-# ── Virtual environments ───────────────────────────────────
+# Virtual environments
 .venv/
 .venv-ui/
 venv/
 env/
 
-# ── IDE ────────────────────────────────────────────────────
+# IDE
 .idea/
 .vscode/
 
-# ── OS ─────────────────────────────────────────────────────
+# OS
 .DS_Store
 Thumbs.db
 
-# ── Caches ─────────────────────────────────────────────────
+# Caches
 .cache/
 .pytest_cache/
 .mypy_cache/
