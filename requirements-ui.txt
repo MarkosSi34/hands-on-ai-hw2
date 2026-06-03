@@ -1,0 +1,6 @@
+#   python -m venv .venv-ui
+#   source .venv-ui/bin/activate        # Windows: .venv-ui\Scripts\activate
+#   pip install -r requirements-ui.txt
+#   streamlit run utils/streamlit_app.py
+streamlit==1.51.0
+requests==2.34.2

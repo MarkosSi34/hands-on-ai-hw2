@@ -1,0 +1,43 @@
+# Pinned for reproducibility (versions verified to load the HW1 artifacts and
+# run the agent end-to-end). Tested on Python 3.13.
+
+# ── Core HW1 inference stack ───────────────────────────────
+# NOTE: scikit-learn / xgboost are pinned to the versions that correctly
+# unpickle the saved HW1 model + scaler. Changing them may break loading.
+joblib==1.5.3
+numpy==2.4.6
+pandas==3.0.3
+scikit-learn==1.8.0
+xgboost==3.2.0
+
+# LLM + agent framework
+langchain==1.3.2
+langchain-core==1.4.0
+langchain-community==0.4.2
+langchain-google-genai==4.2.4
+langgraph==1.2.2
+
+# RAG: vector store + embeddings
+chromadb==1.5.9
+langchain-chroma==1.1.0
+sentence-transformers==5.5.1
+langchain-huggingface==1.2.2
+pypdf==6.12.2
+
+# API layer
+fastapi==0.136.3
+uvicorn[standard]==0.48.0
+pydantic==2.13.4
+sse-starlette==3.4.4
+python-dotenv==1.2.2
+
+# NOTE: the Streamlit chat UI is NOT installed here. It is a separate HTTP
+# client (streamlit_app.py) that only needs `streamlit` + `requests`, and
+# Streamlit pins pandas<3 which conflicts with the pandas==3.0.3 the HW1
+# model needs. Install the UI in its own venv from requirements-ui.txt.
+
+# ── Knowledge-base builder (utils/doc_parser.py) ───────────
+requests==2.34.2
+beautifulsoup4==4.14.3
+lxml==6.1.1
+reportlab==4.5.1
