@@ -243,7 +243,7 @@ curl -X POST http://127.0.0.1:8000/chat -H "Content-Type: application/json" -d '
 *Turn 1 — πρόβλεψη (νέο `session_id`):*
 ```bash
 curl -X POST http://127.0.0.1:8000/chat -H "Content-Type: application/json" -d '{
-  "message": "Predict the income for a 28-year-old Female, Private workclass, HS-grad, education_num 9, Never-married, Other-service occupation, Own-child relationship, fnlwgt 200000, capital_gain 0, capital_loss 0, 35 hours/week, native country Mexico.",
+  "message": "Predict the income for a 28-year-old Black Female, Private workclass, HS-grad, education_num 9, Never-married, Other-service occupation, Own-child relationship, fnlwgt 200000, capital_gain 0, capital_loss 0, 35 hours/week, native country Mexico.",
   "session_id": "demo_bias"
 }'
 ```
@@ -314,7 +314,7 @@ cp .env.example .env
 το `.env` (σειρά: `--api-key` > shell env > `.env`):
 
 ```bash
-python main.py --api-key AIza...(το κλειδί σας)
+python3 main.py --api-key AIza...(το κλειδί σας)
 ```
 
 > **Προσοχή:** Ένα κλειδί στη γραμμή εντολών φαίνεται στο `ps` και στο ιστορικό του shell.
@@ -326,14 +326,15 @@ python main.py --api-key AIza...(το κλειδί σας)
 git clone https://github.com/MarkosSi34/hands-on-ai-hw2.git
 cd hands-on-ai-hw2
 
-python -m venv .venv
+python3 -m venv .venv
 source .venv/bin/activate          # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
 
-python main.py                     # ή: uvicorn src.api:app --host 127.0.0.1 --port 8000
+python3 main.py                     # ή: uvicorn src.api:app --host 127.0.0.1 --port 8000
 ```
+Αρχικά μπορείτε να δοκιμάσετε όλα τα παραπάνω σενάρια με curl commands, ώστε να διαπιστώσετε την λειτουργικότητα.
 
-Ανοίξτε το Swagger UI στο <http://127.0.0.1:8000/docs>.
+Εν συνεχεία ανοίξτε το Swagger UI στο <http://127.0.0.1:8000/docs>. 
 
 ### Συνομιλία μέσω Streamlit chat UI
 
@@ -353,10 +354,10 @@ python main.py                     # ή: uvicorn src.api:app --host 127.0.0.1 --
 ```bash
 # Τερματικό A — backend (στο venv του project):
 source .venv/bin/activate
-python main.py                                    # http://127.0.0.1:8000
+python3 main.py                                    # http://127.0.0.1:8000
 
 # Τερματικό B — UI σε ΞΕΧΩΡΙΣΤΟ venv:
-python -m venv .venv-ui
+python3 -m venv .venv-ui
 source .venv-ui/bin/activate                      # Windows: .venv-ui\Scripts\activate
 pip install -r requirements-ui.txt
 streamlit run utils/streamlit_app.py              # http://localhost:8501
@@ -461,13 +462,13 @@ curl -s -X POST http://127.0.0.1:8000/chat \
 ```bash
 curl -X POST http://127.0.0.1:8000/chat \
   -H "Content-Type: application/json" \
-  -d '{"message": "Would a 45-year-old with a Bachelors degree earn over $50K?", "session_id": "user_001"}'
+  -d '{"message": "Would this person earn over $50K? age 39, State-gov, fnlwgt 77516, Bachelors, education_num 13, Never-married, Adm-clerical, Not-in-family, White, Male, capital_gain 2174, capital_loss 0, 40 hours/week, United-States.", "session_id": "user_001"}'
 ```
 
 Απάντηση:
 
 ```json
-{"response": "Based on the model, this person is predicted to earn <=50K ..."}
+{"response": "Based on the model, this person is predicted to earn <=50K (probability of >$50K: ~3.7%)."}
 ```
 
 **`/chat` με Python `requests`:**
